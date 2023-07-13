@@ -1,4 +1,5 @@
-﻿
+﻿@model _GMTEGRATOR.Models.GM_TBLSTSABIT
+@using _GMTEGRATOR.Models;
 @{
     ViewBag.Title = "";
 }
@@ -11,40 +12,85 @@
     }
 </style>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="row">
-                <div class="col-md-3">  Stok Kodu:</div> @Html.TextBox("Stokkodu", "", new { @class = "form-control" })
+@using (Html.BeginForm("UrunKayitMethod", "Urun", FormMethod.Post))
+{
+    Html.AntiForgeryToken();
+    @Html.ValidationSummary(true);
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-3">  Stok Kodu:</div> @Html.TextBoxFor(x => x.STOK_KODU, new { @class = "form-control" })
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        Stok Adı:
+                    </div> @Html.TextBoxFor(x => x.STOK_ADI, new { @class = "form-control" })
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        Stok Açıklaması:
+                    </div>@Html.TextAreaFor(x => x.STOK_ACIKLAMASI, new { @class = "form-control" })
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        Fiyat:
+                        @Html.TextBoxFor(x => x.STOK_FIYAT, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-4">
+                        İndirimli Fiyat:
+                        @Html.TextBoxFor(x => x.STOK_FIYAT, new { @class = "form-control" })
+                    </div>
+                  
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        Stok Adedi:
+                    </div> @Html.TextBoxFor(x => x.STOK_ADEDI, new { @class = "form-control" })
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        Satıcı Stok Kodu:
+                    </div> @Html.TextBoxFor(x => x.SELLER_STOK_KODU, new { @class = "form-control" })
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        N11 Katalog ID:
+                        @Html.TextBoxFor(x => x.N11_KATALOG_ID, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-4">
+                        Hepsiburada SKU :
+                        @Html.TextBoxFor(x => x.Hepsiburada_SKU, new { @class = "form-control" })
+                    </div>
+                </div>
+
+
             </div>
 
-            <div class="row">
-                <div class="col-md-3">
-                    Stok Adı:
-                </div> @Html.TextBox("stokadi", "", new { @class = "form-control" })
+
+            <div class="col-md-4">
+                <div class="row">
+                    <img src="https://productimages.hepsiburada.net/s/189/550/110000155170588.jpg/format:webp" width="155" height="145" />
+                    <img src="https://productimages.hepsiburada.net/s/189/550/110000155170589.jpg/format:webp" width="155" height="145" />
+                </div>
+                <div class="row">
+                    <img src="https://productimages.hepsiburada.net/s/189/550/110000155170590.jpg/format:webp" width="125" height="125" />
+                    <img src="https://productimages.hepsiburada.net/s/189/550/110000155170591.jpg/format:webp" width="125" height="125" />
+                </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-3">
-                    Stok Açıklaması:
-                </div>@Html.TextBox("stokaciklamasi", "", new { @class = "form-control" })
-            </div>
-        </div>
-
-
-        <div class="col-md-4">
-            <div class="row">
-                <img src="https://productimages.hepsiburada.net/s/189/550/110000155170588.jpg/format:webp" width="155" height="145" />
-                <img src="https://productimages.hepsiburada.net/s/189/550/110000155170589.jpg/format:webp" width="155" height="145" />
-            </div>
-            <div class="row">
-                <img src="https://productimages.hepsiburada.net/s/189/550/110000155170590.jpg/format:webp" width="125" height="125" />
-                <img src="https://productimages.hepsiburada.net/s/189/550/110000155170591.jpg/format:webp" width="125" height="125" />
-            </div>
-        </div>
-
+        </div><br />
+        <input type="submit" class="btn btn-outline-success" value="ÜRÜN EKLE" />
     </div>
 
-</div>
 
-
+}

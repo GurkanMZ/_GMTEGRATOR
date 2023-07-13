@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="deartech_3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GM_TBLSTRESIM">
+          <Key>
+            <PropertyRef Name="INCKEYNO" />
+          </Key>
+          <Property Name="INCKEYNO" Type="int" Nullable="false" />
+          <Property Name="MAGAZA_ID" Type="int" />
+          <Property Name="STOK_KODU" Type="nvarchar" MaxLength="50" />
+          <Property Name="resim_url1" Type="nvarchar" MaxLength="1200" />
+          <Property Name="resim_url2" Type="nvarchar" MaxLength="1200" />
+          <Property Name="resim_url3" Type="nvarchar" MaxLength="1200" />
+          <Property Name="resim_url4" Type="nvarchar" MaxLength="1200" />
+          <Property Name="resim_url5" Type="nvarchar" MaxLength="1200" />
+        </EntityType>
+        <EntityType Name="GM_TBLSTSABIT">
+          <Key>
+            <PropertyRef Name="INCKEYNO" />
+          </Key>
+          <Property Name="INCKEYNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STOK_KODU" Type="nvarchar" MaxLength="50" />
+          <Property Name="STOK_ADI" Type="nvarchar" MaxLength="1000" />
+          <Property Name="STOK_ACIKLAMASI" Type="nvarchar(max)" />
+          <Property Name="STOK_FIYAT" Type="money" />
+          <Property Name="STOK_ADEDI" Type="int" />
+          <Property Name="STOK_AKTIF_PASIF" Type="int" />
+          <Property Name="MAGAZA_ID" Type="int" />
+          <Property Name="SELLER_STOK_KODU" Type="nvarchar" MaxLength="50" />
+          <Property Name="N11_KATALOG_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hepsiburada_SKU" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="deartech_3ModelStoreContainer">
+          <EntitySet Name="GM_TBLSTRESIM" EntityType="Self.GM_TBLSTRESIM" Schema="deartech_1" store:Type="Tables" />
+          <EntitySet Name="GM_TBLSTSABIT" EntityType="Self.GM_TBLSTSABIT" Schema="deartech_1" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="deartech_3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GM_TBLSTRESIM">
+          <Key>
+            <PropertyRef Name="INCKEYNO" />
+          </Key>
+          <Property Name="INCKEYNO" Type="Int32" Nullable="false" />
+          <Property Name="MAGAZA_ID" Type="Int32" />
+          <Property Name="STOK_KODU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="resim_url1" Type="String" MaxLength="1200" FixedLength="false" Unicode="true" />
+          <Property Name="resim_url2" Type="String" MaxLength="1200" FixedLength="false" Unicode="true" />
+          <Property Name="resim_url3" Type="String" MaxLength="1200" FixedLength="false" Unicode="true" />
+          <Property Name="resim_url4" Type="String" MaxLength="1200" FixedLength="false" Unicode="true" />
+          <Property Name="resim_url5" Type="String" MaxLength="1200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GM_TBLSTSABIT">
+          <Key>
+            <PropertyRef Name="INCKEYNO" />
+          </Key>
+          <Property Name="INCKEYNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STOK_KODU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STOK_ADI" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="STOK_ACIKLAMASI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STOK_FIYAT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="STOK_ADEDI" Type="Int32" />
+          <Property Name="STOK_AKTIF_PASIF" Type="Int32" />
+          <Property Name="MAGAZA_ID" Type="Int32" />
+          <Property Name="SELLER_STOK_KODU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="N11_KATALOG_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hepsiburada_SKU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="deartech_3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GM_TBLSTRESIM" EntityType="Self.GM_TBLSTRESIM" />
+          <EntitySet Name="GM_TBLSTSABIT" EntityType="Self.GM_TBLSTSABIT" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="deartech_3ModelStoreContainer" CdmEntityContainer="deartech_3Entities">
+          <EntitySetMapping Name="GM_TBLSTRESIM">
+            <EntityTypeMapping TypeName="deartech_3Model.GM_TBLSTRESIM">
+              <MappingFragment StoreEntitySet="GM_TBLSTRESIM">
+                <ScalarProperty Name="INCKEYNO" ColumnName="INCKEYNO" />
+                <ScalarProperty Name="MAGAZA_ID" ColumnName="MAGAZA_ID" />
+                <ScalarProperty Name="STOK_KODU" ColumnName="STOK_KODU" />
+                <ScalarProperty Name="resim_url1" ColumnName="resim_url1" />
+                <ScalarProperty Name="resim_url2" ColumnName="resim_url2" />
+                <ScalarProperty Name="resim_url3" ColumnName="resim_url3" />
+                <ScalarProperty Name="resim_url4" ColumnName="resim_url4" />
+                <ScalarProperty Name="resim_url5" ColumnName="resim_url5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GM_TBLSTSABIT">
+            <EntityTypeMapping TypeName="deartech_3Model.GM_TBLSTSABIT">
+              <MappingFragment StoreEntitySet="GM_TBLSTSABIT">
+                <ScalarProperty Name="INCKEYNO" ColumnName="INCKEYNO" />
+                <ScalarProperty Name="STOK_KODU" ColumnName="STOK_KODU" />
+                <ScalarProperty Name="STOK_ADI" ColumnName="STOK_ADI" />
+                <ScalarProperty Name="STOK_ACIKLAMASI" ColumnName="STOK_ACIKLAMASI" />
+                <ScalarProperty Name="STOK_FIYAT" ColumnName="STOK_FIYAT" />
+                <ScalarProperty Name="STOK_ADEDI" ColumnName="STOK_ADEDI" />
+                <ScalarProperty Name="STOK_AKTIF_PASIF" ColumnName="STOK_AKTIF_PASIF" />
+                <ScalarProperty Name="MAGAZA_ID" ColumnName="MAGAZA_ID" />
+                <ScalarProperty Name="SELLER_STOK_KODU" ColumnName="SELLER_STOK_KODU" />
+                <ScalarProperty Name="N11_KATALOG_ID" ColumnName="N11_KATALOG_ID" />
+                <ScalarProperty Name="Hepsiburada_SKU" ColumnName="Hepsiburada_SKU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
