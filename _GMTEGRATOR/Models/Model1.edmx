@@ -4,12 +4,25 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="deartech_3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="deartech_3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GM_KULLANICILAR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KULLANICI_ADI_SOYADI" Type="nvarchar" MaxLength="300" />
+          <Property Name="KULLANICI_MAIL" Type="nvarchar" MaxLength="300" />
+          <Property Name="MAGAZA_ADI" Type="nvarchar" MaxLength="300" />
+          <Property Name="MAGAZA_ID" Type="int" />
+          <Property Name="KULLANICI_SIFRE" Type="nvarchar" MaxLength="300" />
+          <Property Name="KULLANICI_YETKI" Type="nvarchar" MaxLength="50" />
+          <Property Name="KULLANICI_AKTIF" Type="bit" />
+        </EntityType>
         <EntityType Name="GM_TBLSTRESIM">
           <Key>
             <PropertyRef Name="INCKEYNO" />
           </Key>
-          <Property Name="INCKEYNO" Type="int" Nullable="false" />
+          <Property Name="INCKEYNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MAGAZA_ID" Type="int" />
           <Property Name="STOK_KODU" Type="nvarchar" MaxLength="50" />
           <Property Name="resim_url1" Type="nvarchar" MaxLength="1200" />
@@ -33,13 +46,59 @@
           <Property Name="SELLER_STOK_KODU" Type="nvarchar" MaxLength="50" />
           <Property Name="N11_KATALOG_ID" Type="nvarchar" MaxLength="50" />
           <Property Name="Hepsiburada_SKU" Type="nvarchar" MaxLength="50" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'deartech_3.deartech_1.TUM_URUNLER_V' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TUM_URUNLER_V">
+          <Key>
+            <PropertyRef Name="INCKEYNO" />
+          </Key>
+          <Property Name="INCKEYNO" Type="int" Nullable="false" />
+          <Property Name="STOK_KODU" Type="nvarchar" MaxLength="50" />
+          <Property Name="STOK_ADI" Type="nvarchar" MaxLength="1000" />
+          <Property Name="STOK_ACIKLAMASI" Type="nvarchar(max)" />
+          <Property Name="STOK_FIYAT" Type="money" />
+          <Property Name="STOK_ADEDI" Type="int" />
+          <Property Name="STOK_AKTIF_PASIF" Type="int" />
+          <Property Name="MAGAZA_ID" Type="int" />
+          <Property Name="SELLER_STOK_KODU" Type="nvarchar" MaxLength="50" />
+          <Property Name="N11_KATALOG_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hepsiburada_SKU" Type="nvarchar" MaxLength="50" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="200" />
+          <Property Name="resim_url1" Type="nvarchar" MaxLength="1200" />
+          <Property Name="resim_url2" Type="nvarchar" MaxLength="1200" />
+          <Property Name="resim_url3" Type="nvarchar" MaxLength="1200" />
+          <Property Name="resim_url4" Type="nvarchar" MaxLength="1200" />
+          <Property Name="resim_url5" Type="nvarchar" MaxLength="1200" />
         </EntityType>
         <EntityContainer Name="deartech_3ModelStoreContainer">
+          <EntitySet Name="GM_KULLANICILAR" EntityType="Self.GM_KULLANICILAR" Schema="deartech_1" store:Type="Tables" />
           <EntitySet Name="GM_TBLSTRESIM" EntityType="Self.GM_TBLSTRESIM" Schema="deartech_1" store:Type="Tables" />
           <EntitySet Name="GM_TBLSTSABIT" EntityType="Self.GM_TBLSTSABIT" Schema="deartech_1" store:Type="Tables" />
+          <EntitySet Name="TUM_URUNLER_V" EntityType="Self.TUM_URUNLER_V" store:Type="Views" store:Schema="deartech_1">
+            <DefiningQuery>SELECT 
+    [TUM_URUNLER_V].[INCKEYNO] AS [INCKEYNO], 
+    [TUM_URUNLER_V].[STOK_KODU] AS [STOK_KODU], 
+    [TUM_URUNLER_V].[STOK_ADI] AS [STOK_ADI], 
+    [TUM_URUNLER_V].[STOK_ACIKLAMASI] AS [STOK_ACIKLAMASI], 
+    [TUM_URUNLER_V].[STOK_FIYAT] AS [STOK_FIYAT], 
+    [TUM_URUNLER_V].[STOK_ADEDI] AS [STOK_ADEDI], 
+    [TUM_URUNLER_V].[STOK_AKTIF_PASIF] AS [STOK_AKTIF_PASIF], 
+    [TUM_URUNLER_V].[MAGAZA_ID] AS [MAGAZA_ID], 
+    [TUM_URUNLER_V].[SELLER_STOK_KODU] AS [SELLER_STOK_KODU], 
+    [TUM_URUNLER_V].[N11_KATALOG_ID] AS [N11_KATALOG_ID], 
+    [TUM_URUNLER_V].[Hepsiburada_SKU] AS [Hepsiburada_SKU], 
+    [TUM_URUNLER_V].[Marka] AS [Marka], 
+    [TUM_URUNLER_V].[resim_url1] AS [resim_url1], 
+    [TUM_URUNLER_V].[resim_url2] AS [resim_url2], 
+    [TUM_URUNLER_V].[resim_url3] AS [resim_url3], 
+    [TUM_URUNLER_V].[resim_url4] AS [resim_url4], 
+    [TUM_URUNLER_V].[resim_url5] AS [resim_url5]
+    FROM [deartech_1].[TUM_URUNLER_V] AS [TUM_URUNLER_V]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="deartech_3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -71,11 +130,49 @@
           <Property Name="SELLER_STOK_KODU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="N11_KATALOG_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Hepsiburada_SKU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Marka" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="deartech_3Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="GM_TBLSTRESIM" EntityType="Self.GM_TBLSTRESIM" />
           <EntitySet Name="GM_TBLSTSABIT" EntityType="Self.GM_TBLSTSABIT" />
+          <EntitySet Name="TUM_URUNLER_V" EntityType="deartech_3Model.TUM_URUNLER_V" />
+          <EntitySet Name="GM_KULLANICILAR" EntityType="deartech_3Model.GM_KULLANICILAR" />
         </EntityContainer>
+        <EntityType Name="TUM_URUNLER_V">
+          <Key>
+            <PropertyRef Name="INCKEYNO" />
+          </Key>
+          <Property Name="INCKEYNO" Type="Int32" Nullable="false" />
+          <Property Name="STOK_KODU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STOK_ADI" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="STOK_ACIKLAMASI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STOK_FIYAT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="STOK_ADEDI" Type="Int32" />
+          <Property Name="STOK_AKTIF_PASIF" Type="Int32" />
+          <Property Name="MAGAZA_ID" Type="Int32" />
+          <Property Name="SELLER_STOK_KODU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="N11_KATALOG_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hepsiburada_SKU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="resim_url1" Type="String" MaxLength="1200" FixedLength="false" Unicode="true" />
+          <Property Name="resim_url2" Type="String" MaxLength="1200" FixedLength="false" Unicode="true" />
+          <Property Name="resim_url3" Type="String" MaxLength="1200" FixedLength="false" Unicode="true" />
+          <Property Name="resim_url4" Type="String" MaxLength="1200" FixedLength="false" Unicode="true" />
+          <Property Name="resim_url5" Type="String" MaxLength="1200" FixedLength="false" Unicode="true" />
+          <Property Name="Marka" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GM_KULLANICILAR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KULLANICI_ADI_SOYADI" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="KULLANICI_MAIL" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="MAGAZA_ADI" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="MAGAZA_ID" Type="Int32" />
+          <Property Name="KULLANICI_SIFRE" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="KULLANICI_YETKI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KULLANICI_AKTIF" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -99,6 +196,7 @@
           <EntitySetMapping Name="GM_TBLSTSABIT">
             <EntityTypeMapping TypeName="deartech_3Model.GM_TBLSTSABIT">
               <MappingFragment StoreEntitySet="GM_TBLSTSABIT">
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
                 <ScalarProperty Name="INCKEYNO" ColumnName="INCKEYNO" />
                 <ScalarProperty Name="STOK_KODU" ColumnName="STOK_KODU" />
                 <ScalarProperty Name="STOK_ADI" ColumnName="STOK_ADI" />
@@ -110,6 +208,43 @@
                 <ScalarProperty Name="SELLER_STOK_KODU" ColumnName="SELLER_STOK_KODU" />
                 <ScalarProperty Name="N11_KATALOG_ID" ColumnName="N11_KATALOG_ID" />
                 <ScalarProperty Name="Hepsiburada_SKU" ColumnName="Hepsiburada_SKU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TUM_URUNLER_V">
+            <EntityTypeMapping TypeName="deartech_3Model.TUM_URUNLER_V">
+              <MappingFragment StoreEntitySet="TUM_URUNLER_V">
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="resim_url5" ColumnName="resim_url5" />
+                <ScalarProperty Name="resim_url4" ColumnName="resim_url4" />
+                <ScalarProperty Name="resim_url3" ColumnName="resim_url3" />
+                <ScalarProperty Name="resim_url2" ColumnName="resim_url2" />
+                <ScalarProperty Name="resim_url1" ColumnName="resim_url1" />
+                <ScalarProperty Name="Hepsiburada_SKU" ColumnName="Hepsiburada_SKU" />
+                <ScalarProperty Name="N11_KATALOG_ID" ColumnName="N11_KATALOG_ID" />
+                <ScalarProperty Name="SELLER_STOK_KODU" ColumnName="SELLER_STOK_KODU" />
+                <ScalarProperty Name="MAGAZA_ID" ColumnName="MAGAZA_ID" />
+                <ScalarProperty Name="STOK_AKTIF_PASIF" ColumnName="STOK_AKTIF_PASIF" />
+                <ScalarProperty Name="STOK_ADEDI" ColumnName="STOK_ADEDI" />
+                <ScalarProperty Name="STOK_FIYAT" ColumnName="STOK_FIYAT" />
+                <ScalarProperty Name="STOK_ACIKLAMASI" ColumnName="STOK_ACIKLAMASI" />
+                <ScalarProperty Name="STOK_ADI" ColumnName="STOK_ADI" />
+                <ScalarProperty Name="STOK_KODU" ColumnName="STOK_KODU" />
+                <ScalarProperty Name="INCKEYNO" ColumnName="INCKEYNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GM_KULLANICILAR">
+            <EntityTypeMapping TypeName="deartech_3Model.GM_KULLANICILAR">
+              <MappingFragment StoreEntitySet="GM_KULLANICILAR">
+                <ScalarProperty Name="KULLANICI_AKTIF" ColumnName="KULLANICI_AKTIF" />
+                <ScalarProperty Name="KULLANICI_YETKI" ColumnName="KULLANICI_YETKI" />
+                <ScalarProperty Name="KULLANICI_SIFRE" ColumnName="KULLANICI_SIFRE" />
+                <ScalarProperty Name="MAGAZA_ID" ColumnName="MAGAZA_ID" />
+                <ScalarProperty Name="MAGAZA_ADI" ColumnName="MAGAZA_ADI" />
+                <ScalarProperty Name="KULLANICI_MAIL" ColumnName="KULLANICI_MAIL" />
+                <ScalarProperty Name="KULLANICI_ADI_SOYADI" ColumnName="KULLANICI_ADI_SOYADI" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

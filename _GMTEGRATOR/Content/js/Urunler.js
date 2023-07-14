@@ -2,15 +2,33 @@
 
 $(document).ready(function () {
 
-    var tableData = [
-        { id: 1, name: "Billy Bob", age: "12", gender: "male", height: 1, col: "red", dob: "", cheese: 1 },
-        { id: 2, name: "Mary May", age: "1", gender: "female", height: 2, col: "blue", dob: "14/05/1982", cheese: true },
-    ];
+
     var tblUrunler = new Tabulator("#tblUrunler", {
         layout: "fitDataTable",
         pagination: "local",
         paginationSize: 15,
-        columns: [{ field: "STOK_KODU", title: "STOK_KODU" }],
+        columns: [
+            
+{ formatter: "rowSelection", titleFormatter: "rowSelection", align: "center", headerSort: false }            
+            , {
+            field: "resim_url1", title: "Ürün Kodu", formatter: function (cell, formatterParams) {
+                var value = cell.getValue();
+                return ""+ cell.getRow().getData().STOK_KODU+"<br><img src='" + value + "' width='80' height='80'>";
+            }, cellClick: function (e, cell) {
+                var value = cell.getValue();
+                //alert(value);
+                $('#modal_img').attr('src', value);
+                $('#UrunGoruntulemeModal').modal('toggle');
+                $('#UrunGoruntulemeModal').modal();
+                $('#footer_modal').text(cell.getRow().getData().STOK_ADI);
+            },
+        },
+            //{ field: "STOK_KODU", title: "Ürün Kodu" },
+            { field: "STOK_ADI", title: "Ürün Adı",formatter:"textarea",width:400 },
+            { field: "STOK_FIYAT", title: "Fiyat" },
+            { field: "STOK_ADEDI", title: "Stok" },
+            { field: "Marka", title: "Marka" },
+        ],
     });
 
 
@@ -20,10 +38,11 @@ $(document).ready(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (Urunlistesi) {
-            var dataaa = Urunlistesi;
-            tblUrunler.on("tableBuilt", function () {
-                tblUrunler.setData(dataaa);
-            });
+
+            tblUrunler.setData(Urunlistesi);
+            //tblUrunler.on("tableBuilt", function () {
+            //    tblUrunler.setData(Urunlistesi);
+            //});
         },
         failure: function (response) {
             alert("failure");

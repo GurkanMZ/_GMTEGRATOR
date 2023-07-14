@@ -14,13 +14,19 @@ namespace _GMTEGRATOR.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            if (Session["MagazaID"] == null)
+                return RedirectToAction("Index", "Login");
+
+
             return View();
         }
 
         [HttpGet]
         public JsonResult TumUrunlerList()
         {
-            var Urunlistesi = context.GM_TBLSTSABIT.ToList();
+            var MagazaID = Convert.ToInt32(Session["MagazaID"].ToString());
+            ViewBag.MagazaAdi = Session["MagazaAdi"].ToString();
+            var Urunlistesi = context.TUM_URUNLER_V.Where(m => m.MAGAZA_ID == MagazaID).ToList();
             return Json(Urunlistesi, JsonRequestBehavior.AllowGet);
         }
 

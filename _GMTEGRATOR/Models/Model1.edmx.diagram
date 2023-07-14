@@ -7,6 +7,8 @@
       <Diagram DiagramId="2a3042d5d39b4036a1a6a792498d17be" Name="Diagram1">
         <EntityTypeShape EntityType="deartech_3Model.GM_TBLSTRESIM" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="deartech_3Model.GM_TBLSTSABIT" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="deartech_3Model.TUM_URUNLER_V" Width="1.5" PointX="5.625" PointY="1" />
+        <EntityTypeShape EntityType="deartech_3Model.GM_KULLANICILAR" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
