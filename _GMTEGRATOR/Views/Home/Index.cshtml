@@ -16,26 +16,46 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/yadcf/0.9.1/jquery.dataTables.yadcf.js"></script>
 
 
-<div class="container">
-    <div class="modal" id="UrunGoruntulemeModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document" style="font-family: serif;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ürün Görseli:</h5>
 
-                </div>
-                <div class="modal-body">
-                    <img id="modal_img" src="https://kmwheels.net/files/b2bresim/DY6055_5_BD-5.JPG" width="100%" />
-                    <h3 id="footer_modal" style="font-family: Avanta Garde">GM</h3>
 
-                </div>
-                <div class="modal-footer">
-                    <button id="modalkapatbtn" type="button" class="btn btn-warning" data-dismiss="modal">Kapat</button>
-                </div>
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+<script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/yadcf/0.9.1/jquery.dataTables.yadcf.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+
+
+<div class="modal" id="UrunGoruntulemeModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="font-family: serif;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ürün Görseli:</h5>
+
+            </div>
+            <div class="modal-body">
+                <img id="modal_img" src="https://kmwheels.net/files/b2bresim/DY6055_5_BD-5.JPG" width="100%" />
+                <h3 id="footer_modal" style="font-family: Avanta Garde">GM</h3>
+
+            </div>
+            <div class="modal-footer">
+                <button id="modalkapatbtn" type="button" class="btn btn-warning" data-dismiss="modal">Kapat</button>
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="container">
     <h4 style="position:absolute;"> @ViewBag.MagazaAdi</h4>
-    <h2>Tüm Ürünler</h2>
+    <div class="row">
+        <div class="col-md-10">
+            <h2>Tüm Ürünler</h2>
+        </div>
+        <div class="col-md-2">
+            <a href="/Urun/Index" class="btn btn-secondary">Ürün Ekle</a> 
+        </div>
+    </div>
     <div id="tblUrunler"></div>
 </div>

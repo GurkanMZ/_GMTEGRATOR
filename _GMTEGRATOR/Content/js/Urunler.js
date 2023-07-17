@@ -17,9 +17,9 @@ $(document).ready(function () {
             }, cellClick: function (e, cell) {
                 var value = cell.getValue();
                 //alert(value);
-                $('#modal_img').attr('src', value);
-                $('#UrunGoruntulemeModal').modal('toggle');
-                $('#UrunGoruntulemeModal').modal();
+                    $('#UrunGoruntulemeModal').modal('toggle');
+                    $('#UrunGoruntulemeModal').modal();
+                    $('#modal_img').attr('src', value);
                 $('#footer_modal').text(cell.getRow().getData().STOK_ADI);
             },
         },
