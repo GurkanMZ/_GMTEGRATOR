@@ -15,12 +15,42 @@ $(document).ready(function () {
                 var value = cell.getValue();
                 return ""+ cell.getRow().getData().STOK_KODU+"<br><img src='" + value + "' width='80' height='80'>";
             }, cellClick: function (e, cell) {
-                var value = cell.getValue();
-                //alert(value);
-                    $('#UrunGoruntulemeModal').modal('toggle');
-                    $('#UrunGoruntulemeModal').modal();
-                    $('#modal_img').attr('src', value);
-                $('#footer_modal').text(cell.getRow().getData().STOK_ADI);
+                    var value = cell.getData();
+                alert(value);
+                //    $('#UrunGoruntulemeModal').modal('toggle');
+                //    $('#UrunGoruntulemeModal').modal();
+                //    $('#modal_img').attr('src', value);
+                //$('#footer_modal').text(cell.getRow().getData().STOK_ADI);
+
+
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/Urun/Index",
+                        data:cell.getData(),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (Urunlistesi) {
+
+                            tblUrunler.setData(Urunlistesi);
+                            //tblUrunler.on("tableBuilt", function () {
+                            //    tblUrunler.setData(Urunlistesi);
+                            //});
+                        },
+                        failure: function (response) {
+                            alert("failure");
+                        },
+                        error: function (response) {
+                            alert("errorrr");
+                        }
+                    });
+
+
+
+
+
+
+
             },
         },
             //{ field: "STOK_KODU", title: "Ürün Kodu" },

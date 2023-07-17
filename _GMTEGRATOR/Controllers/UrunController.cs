@@ -16,11 +16,18 @@ namespace _GMTEGRATOR.Controllers
             return View();
         }
 
+        public ActionResult Index(GM_TBLSTSABIT stsabit)
+        {
+            ViewBag.UrunID = stsabit.STOK_KODU;
+            return View();
+        }
+
         [HttpPost]
         public ActionResult UrunKayitMethod(GM_TBLSTSABIT stsabit)
-        {            
-            context.GM_TBLSTSABIT.Add(stsabit);
-            context.SaveChanges();
+        {
+            UrunISLEMLERI urunEkleme = new UrunISLEMLERI();
+            stsabit.MAGAZA_ID = Convert.ToInt32(Session["MagazaID"].ToString());
+            urunEkleme.UrunAdd(stsabit);
             return RedirectToAction("Index","Urun");
         }
 

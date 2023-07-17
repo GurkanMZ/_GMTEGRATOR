@@ -18,6 +18,16 @@
           <Property Name="KULLANICI_YETKI" Type="nvarchar" MaxLength="50" />
           <Property Name="KULLANICI_AKTIF" Type="bit" />
         </EntityType>
+        <EntityType Name="GM_STSABITLOG">
+          <Key>
+            <PropertyRef Name="INCKEYNO" />
+          </Key>
+          <Property Name="INCKEYNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAGAZAID" Type="int" />
+          <Property Name="STOK_KODU" Type="nvarchar" MaxLength="200" />
+          <Property Name="HATA" Type="nvarchar(max)" />
+          <Property Name="TARIH" Type="datetime" />
+        </EntityType>
         <EntityType Name="GM_TBLSTRESIM">
           <Key>
             <PropertyRef Name="INCKEYNO" />
@@ -36,8 +46,8 @@
             <PropertyRef Name="INCKEYNO" />
           </Key>
           <Property Name="INCKEYNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="STOK_KODU" Type="nvarchar" MaxLength="50" />
-          <Property Name="STOK_ADI" Type="nvarchar" MaxLength="1000" />
+          <Property Name="STOK_KODU" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="STOK_ADI" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="STOK_ACIKLAMASI" Type="nvarchar(max)" />
           <Property Name="STOK_FIYAT" Type="money" />
           <Property Name="STOK_ADEDI" Type="int" />
@@ -74,6 +84,7 @@ warning 6002: The table/view 'deartech_3.deartech_1.TUM_URUNLER_V' does not have
         </EntityType>
         <EntityContainer Name="deartech_3ModelStoreContainer">
           <EntitySet Name="GM_KULLANICILAR" EntityType="Self.GM_KULLANICILAR" Schema="deartech_1" store:Type="Tables" />
+          <EntitySet Name="GM_STSABITLOG" EntityType="Self.GM_STSABITLOG" Schema="deartech_1" store:Type="Tables" />
           <EntitySet Name="GM_TBLSTRESIM" EntityType="Self.GM_TBLSTRESIM" Schema="deartech_1" store:Type="Tables" />
           <EntitySet Name="GM_TBLSTSABIT" EntityType="Self.GM_TBLSTSABIT" Schema="deartech_1" store:Type="Tables" />
           <EntitySet Name="TUM_URUNLER_V" EntityType="Self.TUM_URUNLER_V" store:Type="Views" store:Schema="deartech_1">
@@ -120,8 +131,8 @@ warning 6002: The table/view 'deartech_3.deartech_1.TUM_URUNLER_V' does not have
             <PropertyRef Name="INCKEYNO" />
           </Key>
           <Property Name="INCKEYNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="STOK_KODU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="STOK_ADI" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="STOK_KODU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="STOK_ADI" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="STOK_ACIKLAMASI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="STOK_FIYAT" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="STOK_ADEDI" Type="Int32" />
@@ -137,6 +148,7 @@ warning 6002: The table/view 'deartech_3.deartech_1.TUM_URUNLER_V' does not have
           <EntitySet Name="GM_TBLSTSABIT" EntityType="Self.GM_TBLSTSABIT" />
           <EntitySet Name="TUM_URUNLER_V" EntityType="deartech_3Model.TUM_URUNLER_V" />
           <EntitySet Name="GM_KULLANICILAR" EntityType="deartech_3Model.GM_KULLANICILAR" />
+          <EntitySet Name="GM_STSABITLOG" EntityType="deartech_3Model.GM_STSABITLOG" />
         </EntityContainer>
         <EntityType Name="TUM_URUNLER_V">
           <Key>
@@ -172,6 +184,16 @@ warning 6002: The table/view 'deartech_3.deartech_1.TUM_URUNLER_V' does not have
           <Property Name="KULLANICI_SIFRE" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="KULLANICI_YETKI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="KULLANICI_AKTIF" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="GM_STSABITLOG">
+          <Key>
+            <PropertyRef Name="INCKEYNO" />
+          </Key>
+          <Property Name="INCKEYNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAGAZAID" Type="Int32" />
+          <Property Name="STOK_KODU" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HATA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TARIH" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -245,6 +267,17 @@ warning 6002: The table/view 'deartech_3.deartech_1.TUM_URUNLER_V' does not have
                 <ScalarProperty Name="KULLANICI_MAIL" ColumnName="KULLANICI_MAIL" />
                 <ScalarProperty Name="KULLANICI_ADI_SOYADI" ColumnName="KULLANICI_ADI_SOYADI" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GM_STSABITLOG">
+            <EntityTypeMapping TypeName="deartech_3Model.GM_STSABITLOG">
+              <MappingFragment StoreEntitySet="GM_STSABITLOG">
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="HATA" ColumnName="HATA" />
+                <ScalarProperty Name="STOK_KODU" ColumnName="STOK_KODU" />
+                <ScalarProperty Name="MAGAZAID" ColumnName="MAGAZAID" />
+                <ScalarProperty Name="INCKEYNO" ColumnName="INCKEYNO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

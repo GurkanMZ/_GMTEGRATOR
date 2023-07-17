@@ -29,5 +29,6 @@ namespace _GMTEGRATOR.Models
         public virtual DbSet<GM_TBLSTSABIT> GM_TBLSTSABIT { get; set; }
         public virtual DbSet<TUM_URUNLER_V> TUM_URUNLER_V { get; set; }
         public virtual DbSet<GM_KULLANICILAR> GM_KULLANICILAR { get; set; }
+        public virtual DbSet<GM_STSABITLOG> GM_STSABITLOG { get; set; }
     }
 }
