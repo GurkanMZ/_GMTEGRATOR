@@ -11,16 +11,23 @@ namespace _GMTEGRATOR.Controllers
     {
         deartech_3Entities context = new deartech_3Entities();
         // GET: Urun
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Index(GM_TBLSTSABIT stsabit)
+      
+        [HttpPost]
+        public ActionResult UrunDetay(string STOK_KODU)
         {
-            ViewBag.UrunID = stsabit.STOK_KODU;
-            return View();
+            //System.Web.Script.Serialization.JavaScriptSerializer jsSerializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            //ViewBag.UrunID = STOK_KODU;
+            //var liste = context.GM_TBLSTSABIT.ToList();
+            //return Json(liste, JsonRequestBehavior.AllowGet);
+            return RedirectToAction("Index","Urun");
         }
+
 
         [HttpPost]
         public ActionResult UrunKayitMethod(GM_TBLSTSABIT stsabit)

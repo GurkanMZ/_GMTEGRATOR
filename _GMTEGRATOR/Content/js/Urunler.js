@@ -15,24 +15,21 @@ $(document).ready(function () {
                 var value = cell.getValue();
                 return ""+ cell.getRow().getData().STOK_KODU+"<br><img src='" + value + "' width='80' height='80'>";
             }, cellClick: function (e, cell) {
-                    var value = cell.getData();
-                alert(value);
+                    var STOK_KODU = cell.getRow().getData().STOK_KODU;
                 //    $('#UrunGoruntulemeModal').modal('toggle');
                 //    $('#UrunGoruntulemeModal').modal();
                 //    $('#modal_img').attr('src', value);
                 //$('#footer_modal').text(cell.getRow().getData().STOK_ADI);
 
-
-
                     $.ajax({
-                        type: "GET",
-                        url: "/Urun/Index",
-                        data:cell.getData(),
+                        type: "POST",
+                        url: "/Urun/UrunDetay",
+                        data: JSON.stringify({ STOK_KODU: STOK_KODU  }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        success: function (Urunlistesi) {
+                        success: function (liste) {
 
-                            tblUrunler.setData(Urunlistesi);
+                            //tblUrunler.setData(liste);
                             //tblUrunler.on("tableBuilt", function () {
                             //    tblUrunler.setData(Urunlistesi);
                             //});
@@ -41,15 +38,9 @@ $(document).ready(function () {
                             alert("failure");
                         },
                         error: function (response) {
-                            alert("errorrr");
+                            alert(response);
                         }
                     });
-
-
-
-
-
-
 
             },
         },
