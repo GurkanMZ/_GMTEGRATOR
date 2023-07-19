@@ -38,6 +38,7 @@ namespace _GMTEGRATOR.Controllers
                     
                 Session["Kullanici_Yetki"] = kull.KULLANICI_YETKI.ToString();
                 Session["MagazaID"] = kull.MAGAZA_ID.ToString();
+                Session["KULLANICI_MAIL"] = kull.KULLANICI_MAIL.ToString();
                 Session["MagazaAdi"] = kull.MAGAZA_ADI.ToString();
                 if (kull.KULLANICI_YETKI == "standart")
                 {
