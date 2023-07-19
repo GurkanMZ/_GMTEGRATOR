@@ -27,19 +27,19 @@ $(document).ready(function () {
                         data: JSON.stringify({ STOK_KODU: STOK_KODU  }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        success: function (liste) {
+                        //success: function (liste) {
 
-                            //tblUrunler.setData(liste);
-                            //tblUrunler.on("tableBuilt", function () {
-                            //    tblUrunler.setData(Urunlistesi);
-                            //});
-                        },
-                        failure: function (response) {
-                            alert("failure");
-                        },
-                        error: function (response) {
-                            alert(response);
-                        }
+                        //    //tblUrunler.setData(liste);
+                        //    //tblUrunler.on("tableBuilt", function () {
+                        //    //    tblUrunler.setData(Urunlistesi);
+                        //    //});
+                        //},
+                        //failure: function (response) {
+                        //    alert("failure");
+                        //},
+                        //error: function (response) {
+                        //    alert("HATAAAA"+response.responseText);
+                        //}
                     });
 
             },

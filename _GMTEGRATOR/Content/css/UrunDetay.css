@@ -1,0 +1,36 @@
+﻿.row {
+    margin-top: +10px;
+}
+
+.gorsel {
+    background: url(../../Content/img/yukleme.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 160px;
+    height: 170px;
+    color: black;
+    border-radius: 10px;
+    font-size: 9px
+}
+
+.gorsel2 {
+    background: url(../../Content/img/yukleme.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 160px;
+    color: black;
+    border-radius: 10px;
+    font-size: 9px
+}
+
+.gorsel3, .gorsel4 {
+    background: url(../../Content/img/yukleme.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 140px;
+    height: 150px;
+    color: black;
+    border-radius: 10px;
+    font-size: 9px
+}

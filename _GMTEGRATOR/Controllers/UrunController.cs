@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,27 +18,58 @@ namespace _GMTEGRATOR.Controllers
             return View();
         }
 
-      
+
         [HttpPost]
         public ActionResult UrunDetay(string STOK_KODU)
         {
             //System.Web.Script.Serialization.JavaScriptSerializer jsSerializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-            //ViewBag.UrunID = STOK_KODU;
+            ViewBag.UrunID = STOK_KODU;
             //var liste = context.GM_TBLSTSABIT.ToList();
             //return Json(liste, JsonRequestBehavior.AllowGet);
-            return RedirectToAction("Index","Urun");
+            return View();
         }
 
 
         [HttpPost]
-        public ActionResult UrunKayitMethod(GM_TBLSTSABIT stsabit)
+        public ActionResult UrunKayitMethod(UrunDetayDAL UrunDetayDAL)
         {
             UrunISLEMLERI urunEkleme = new UrunISLEMLERI();
-            stsabit.MAGAZA_ID = Convert.ToInt32(Session["MagazaID"].ToString());
-            urunEkleme.UrunAdd(stsabit);
-            return RedirectToAction("Index","Urun");
+            UrunDetayDAL.GM_TBLSTSABIT.MAGAZA_ID = Convert.ToInt32(Session["MagazaID"].ToString());
+            urunEkleme.UrunAdd(UrunDetayDAL.GM_TBLSTSABIT);
+            klasorekaydet(UrunDetayDAL);
+            return RedirectToAction("Index", "Home");
         }
 
+
+
+
+        public void klasorekaydet(UrunDetayDAL UrunDetayDAL)
+        {
+            #region Dosyaya kaydet 1  
+            var MagazaAdi = Session["MagazaAdi"];
+            foreach (var i in UrunDetayDAL.gorsel)
+            {
+                if (i.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(i.FileName);
+                    if (Server.MapPath("~/image/" + MagazaAdi + "").Count() > 0)
+                    {
+                        Directory.CreateDirectory(Server.MapPath("~/image/" + MagazaAdi + ""));
+                        var path = Path.Combine(Server.MapPath("~/image/" + MagazaAdi + ""), filename);
+                        i.SaveAs(path);
+
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(Server.MapPath("~/image/" + MagazaAdi + ""));
+                        var path = Path.Combine(Server.MapPath("~/image/" + MagazaAdi + ""), filename);
+                        i.SaveAs(path);
+
+                    }
+                }
+            }
+            #endregion
+        }
 
     }
 }
