@@ -21,10 +21,27 @@ namespace _GMTEGRATOR.Controllers
 
 
         [HttpPost]
-        public ActionResult UrunDetay(string STOK_KODU)
+        public JsonResult Index(string STOK_KODU)
         {
-            ViewBag.UrunID = STOK_KODU;
-            return View();
+            // ÜRÜNÜN BİLGİLERİNİ BURADAN AL.
+            var ID = Convert.ToInt32(Session["MagazaID"].ToString());
+            TUM_URUNLER_V Urun = context.TUM_URUNLER_V.FirstOrDefault(x => x.STOK_KODU == STOK_KODU & x.MAGAZA_ID == ID);
+            Session["STOK_KODU"] = Urun.STOK_KODU;
+            Session["STOK_ADI"] = Urun.STOK_ADI;
+            Session["STOK_ACIKLAMASI"] = Urun.STOK_ACIKLAMASI;
+            Session["STOK_FIYAT"] = Urun.STOK_FIYAT;
+            Session["STOK_ADEDI"] = Urun.STOK_ADEDI;
+            Session["SELLER_STOK_KODU"] = Urun.SELLER_STOK_KODU;
+            Session["N11_KATALOG_ID"] = Urun.N11_KATALOG_ID;
+            Session["Hepsiburada_SKU"] = Urun.Hepsiburada_SKU;
+            Session["Marka"] = Urun.Marka;
+            Session["resim_url1"] = Urun.resim_url1;
+            Session["resim_url2"] = Urun.resim_url2;
+            Session["resim_url3"] = Urun.resim_url3;
+            Session["resim_url4"] = Urun.resim_url4;
+
+            ViewBag.STOK_KODU = Urun.STOK_KODU;
+            return Json("success", JsonRequestBehavior.AllowGet);
         }
 
 
@@ -34,22 +51,26 @@ namespace _GMTEGRATOR.Controllers
             UrunISLEMLERI urunEkleme = new UrunISLEMLERI();
             UrunDetayDAL.GM_TBLSTSABIT.MAGAZA_ID = Convert.ToInt32(Session["MagazaID"].ToString());
             urunEkleme.UrunAdd(UrunDetayDAL.GM_TBLSTSABIT);
-            if (UrunDetayDAL.gorsel != null)
+            var grs1 = UrunDetayDAL.gorsel.ToList();
+            var grs2 = UrunDetayDAL.gorsel2.ToList();
+            var grs3 = UrunDetayDAL.gorsel3.ToList();
+            var grs4 = UrunDetayDAL.gorsel4.ToList();
+            if (grs1[0] != null)
             {
                 klasorekaydet(UrunDetayDAL);
                 ftpyukle1(UrunDetayDAL);
             }
-            if (UrunDetayDAL.gorsel2.Count() > 0)
+            if (grs2[0] != null)
             {
                 klasorekaydet2(UrunDetayDAL);
                 ftpyukle2(UrunDetayDAL);
             }
-            if (UrunDetayDAL.gorsel3 != null)
+            if (grs3[0] != null)
             {
                 klasorekaydet3(UrunDetayDAL);
                 ftpyukle3(UrunDetayDAL);
             }
-            if (UrunDetayDAL.gorsel4 != null)
+            if (grs4[0] != null)
             {
                 klasorekaydet4(UrunDetayDAL);
                 ftpyukle4(UrunDetayDAL);
@@ -339,19 +360,23 @@ namespace _GMTEGRATOR.Controllers
         {
             try
             {
+                var grs1 = UrunDetayDAL.gorsel.ToList();
+                var grs2 = UrunDetayDAL.gorsel2.ToList();
+                var grs3 = UrunDetayDAL.gorsel3.ToList();
+                var grs4 = UrunDetayDAL.gorsel4.ToList();
                 GM_TBLSTRESIM urun = new GM_TBLSTRESIM();
                 urun.MAGAZA_ID = Convert.ToInt32(Session["MagazaID"].ToString());
 
-                if (UrunDetayDAL.gorsel != null)
-                    urun.resim_url1 = "https://deartechnologies.com/IMAGES/PRODUCT_IMG" + Session["SadeDosyaAdi"].ToString();
+                if (grs1[0] != null)
+                    urun.resim_url1 = "https://deartechnologies.com/IMAGES/PRODUCT_IMG/" + Session["SadeDosyaAdi"].ToString();
 
-                if (UrunDetayDAL.gorsel2 != null)
+                if (grs2[0] != null)
                     urun.resim_url2 = "https://deartechnologies.com/IMAGES/PRODUCT_IMG" + Session["SadeDosyaAdi2"].ToString();
 
-                if (UrunDetayDAL.gorsel3 != null)
+                if (grs3[0] != null)
                     urun.resim_url3 = "https://deartechnologies.com/IMAGES/PRODUCT_IMG" + Session["SadeDosyaAdi3"].ToString();
 
-                if (UrunDetayDAL.gorsel4 != null)
+                if (grs4[0] != null)
                     urun.resim_url4 = "https://deartechnologies.com/IMAGES/PRODUCT_IMG" + Session["SadeDosyaAdi4"].ToString();
 
                 urun.STOK_KODU = UrunDetayDAL.GM_TBLSTSABIT.STOK_KODU;
