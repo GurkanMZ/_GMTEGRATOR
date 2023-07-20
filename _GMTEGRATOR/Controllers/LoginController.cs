@@ -35,7 +35,7 @@ namespace _GMTEGRATOR.Controllers
             if (kullanici)
             {
                 FormsAuthentication.SetAuthCookie(kull.KULLANICI_MAIL, false);
-                    
+                    //4
                 Session["Kullanici_Yetki"] = kull.KULLANICI_YETKI.ToString();
                 Session["MagazaID"] = kull.MAGAZA_ID.ToString();
                 Session["MagazaAdi"] = kull.MAGAZA_ADI.ToString();
