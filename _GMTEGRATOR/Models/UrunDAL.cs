@@ -54,8 +54,12 @@ namespace _GMTEGRATOR.Models
             deartech_3Entities context = new deartech_3Entities();
             try
             {
-                context.GM_TBLSTSABIT.Add(stsabit);
-                context.SaveChanges();
+                var Urun = context.GM_TBLSTSABIT.FirstOrDefault(a => a.STOK_KODU == stsabit.STOK_KODU & a.MAGAZA_ID == stsabit.MAGAZA_ID);
+                if (Urun ==null)
+                {
+                    context.GM_TBLSTSABIT.Add(stsabit);
+                    context.SaveChanges();
+                }
             }
             catch (Exception exception)
             {
