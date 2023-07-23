@@ -17,7 +17,7 @@ namespace _GMTEGRATOR.Controllers
             if (Session["MagazaID"] == null)
                 return RedirectToAction("Index", "Login");
 
-
+            //s
             return View();
         }
 
