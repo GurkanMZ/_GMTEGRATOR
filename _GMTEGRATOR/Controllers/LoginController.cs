@@ -12,7 +12,7 @@ namespace _GMTEGRATOR.Controllers
 {
     public class LoginController : Controller
     {
-        deartech_3Entities context = new deartech_3Entities();
+        deartech_3Entities1 context = new deartech_3Entities1();
 
         // GET: Login
         public ActionResult Index()

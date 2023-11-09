@@ -13,10 +13,10 @@ namespace _GMTEGRATOR.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class deartech_3Entities : DbContext
+    public partial class deartech_3Entities1 : DbContext
     {
-        public deartech_3Entities()
-            : base("name=deartech_3Entities")
+        public deartech_3Entities1()
+            : base("name=deartech_3Entities1")
         {
         }
     
@@ -25,10 +25,12 @@ namespace _GMTEGRATOR.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<GM_TBLSTRESIM> GM_TBLSTRESIM { get; set; }
-        public virtual DbSet<GM_TBLSTSABIT> GM_TBLSTSABIT { get; set; }
-        public virtual DbSet<TUM_URUNLER_V> TUM_URUNLER_V { get; set; }
         public virtual DbSet<GM_KULLANICILAR> GM_KULLANICILAR { get; set; }
         public virtual DbSet<GM_STSABITLOG> GM_STSABITLOG { get; set; }
+        public virtual DbSet<GM_TBLSTRESIM> GM_TBLSTRESIM { get; set; }
+        public virtual DbSet<GM_TBLSTSABIT> GM_TBLSTSABIT { get; set; }
+        public virtual DbSet<GM_USER_SYSTEM_SETTINGS> GM_USER_SYSTEM_SETTINGS { get; set; }
+        public virtual DbSet<TUM_URUNLER_V> TUM_URUNLER_V { get; set; }
+        public virtual DbSet<GM_ERROR_MESSAGES> GM_ERROR_MESSAGES { get; set; }
     }
 }

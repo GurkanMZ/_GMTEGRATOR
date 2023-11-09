@@ -16,11 +16,7 @@ $(document).ready(function () {
                     return "" + cell.getRow().getData().STOK_KODU + "<br><img src='" + value + "' width='80' height='80'>";
                 }, cellClick: function (e, cell) {
                     var STOK_KODU = cell.getRow().getData().STOK_KODU;
-                    //    $('#UrunGoruntulemeModal').modal('toggle');
-                    //    $('#UrunGoruntulemeModal').modal();
-                    //    $('#modal_img').attr('src', value);
-                    //$('#footer_modal').text(cell.getRow().getData().STOK_ADI);
-                   
+                         
 
                     $.ajax({
                         type: "POST",
@@ -31,10 +27,6 @@ $(document).ready(function () {
                         success: function (response) {
                             window.open("/Urun/Index");
                             $("#STOK_ADI").val("eeee");
-                            //tblUrunler.setData(liste);
-                            //tblUrunler.on("tableBuilt", function () {
-                            //    tblUrunler.setData(Urunlistesi);
-                            //});
                         },
                         failure: function (response) {
                             alert("failure");
@@ -46,8 +38,30 @@ $(document).ready(function () {
 
                 },
             },
-            //{ field: "STOK_KODU", title: "Ürün Kodu" },
-            { field: "STOK_ADI", title: "Ürün Adı", formatter: "textarea", width: 400 },
+            {
+                field: "STOK_ADI", title: "Ürün Adı", formatter: "textarea", width: 400, cellClick: function (e, cell) {
+                    var STOK_KODU = cell.getRow().getData().STOK_KODU;
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/Urun/Index",
+                        data: JSON.stringify({ STOK_KODU: STOK_KODU }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            window.open("/Urun/Index");
+                            $("#STOK_ADI").val("eeee");
+                        },
+                        failure: function (response) {
+                            alert("failure");
+                        },
+                        error: function (response) {
+                            alert("HATAAAA" + response.responseText);
+                        }
+                    });
+
+                },},
             { field: "STOK_FIYAT", title: "Fiyat" },
             { field: "STOK_ADEDI", title: "Stok" },
             { field: "Marka", title: "Marka" },

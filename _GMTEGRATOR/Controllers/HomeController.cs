@@ -10,17 +10,14 @@ namespace _GMTEGRATOR.Controllers
 {
     public class HomeController : Controller
     {
-        deartech_3Entities context = new deartech_3Entities();
+        deartech_3Entities1 context = new deartech_3Entities1();
         // GET: Home
         public ActionResult Index()
         {
             if (Session["MagazaID"] == null)
-                return RedirectToAction("Index", "Login");
-
-            //s
+                return RedirectToAction("Index", "Login");    
             return View();
         }
-
         [HttpGet]
         public JsonResult TumUrunlerList()
         {
@@ -29,13 +26,5 @@ namespace _GMTEGRATOR.Controllers
             var Urunlistesi = context.TUM_URUNLER_V.Where(m => m.MAGAZA_ID == MagazaID).ToList();
             return Json(Urunlistesi, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
-
-
-
     }
 }

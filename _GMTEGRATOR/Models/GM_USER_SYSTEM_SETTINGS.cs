@@ -12,24 +12,29 @@ namespace _GMTEGRATOR.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TUM_URUNLER_V
+    public partial class GM_USER_SYSTEM_SETTINGS
     {
-        public int INCKEYNO { get; set; }
+        public int ID { get; set; }
+        public Nullable<int> MAGAZA_ID { get; set; }
+        public string TABLO_VIEW_ISMI { get; set; }
         public string STOK_KODU { get; set; }
         public string STOK_ADI { get; set; }
         public string STOK_ACIKLAMASI { get; set; }
         public Nullable<decimal> STOK_FIYAT { get; set; }
         public Nullable<int> STOK_ADEDI { get; set; }
         public Nullable<int> STOK_AKTIF_PASIF { get; set; }
-        public Nullable<int> MAGAZA_ID { get; set; }
         public string SELLER_STOK_KODU { get; set; }
         public string N11_KATALOG_ID { get; set; }
-        public string Hepsiburada_SKU { get; set; }
-        public string Marka { get; set; }
-        public string resim_url1 { get; set; }
-        public string resim_url2 { get; set; }
-        public string resim_url3 { get; set; }
-        public string resim_url4 { get; set; }
-        public string resim_url5 { get; set; }
+        public string HEPSIBURADA_SKU { get; set; }
+        public string MARKA { get; set; }
+        public string RESIM_URL1 { get; set; }
+        public string RESIM_URL2 { get; set; }
+        public string RESIM_URL3 { get; set; }
+        public string RESIM_URL4 { get; set; }
+        public string RESIM_URL5 { get; set; }
+        public string SERVER_URL { get; set; }
+        public string DBNAME { get; set; }
+        public string USER_NAME { get; set; }
+        public string USER_PASSWORD { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace _GMTEGRATOR.Controllers
 {
     public class UrunController : Controller
     {
-        deartech_3Entities context = new deartech_3Entities();
+        deartech_3Entities1 context = new deartech_3Entities1();
         // GET: Urun
         [HttpGet]
         public ActionResult Index()
@@ -50,33 +50,35 @@ namespace _GMTEGRATOR.Controllers
         {
             UrunISLEMLERI urunEkleme = new UrunISLEMLERI();
             UrunDetayDAL.GM_TBLSTSABIT.MAGAZA_ID = Convert.ToInt32(Session["MagazaID"].ToString());
-            urunEkleme.UrunAdd(UrunDetayDAL.GM_TBLSTSABIT);
-            var grs1 = UrunDetayDAL.gorsel.ToList();
-            var grs2 = UrunDetayDAL.gorsel2.ToList();
-            var grs3 = UrunDetayDAL.gorsel3.ToList();
-            var grs4 = UrunDetayDAL.gorsel4.ToList();
-            if (grs1[0] != null)
+            bool varyok = urunEkleme.UrunAdd(UrunDetayDAL.GM_TBLSTSABIT);
+            if (varyok)
             {
-                klasorekaydet(UrunDetayDAL);
-                ftpyukle1(UrunDetayDAL);
+                var grs1 = UrunDetayDAL.gorsel.ToList();
+                var grs2 = UrunDetayDAL.gorsel2.ToList();
+                var grs3 = UrunDetayDAL.gorsel3.ToList();
+                var grs4 = UrunDetayDAL.gorsel4.ToList();
+                if (grs1[0] != null)
+                {
+                    klasorekaydet(UrunDetayDAL);
+                    ftpyukle1(UrunDetayDAL);
+                }
+                if (grs2[0] != null)
+                {
+                    klasorekaydet2(UrunDetayDAL);
+                    ftpyukle2(UrunDetayDAL);
+                }
+                if (grs3[0] != null)
+                {
+                    klasorekaydet3(UrunDetayDAL);
+                    ftpyukle3(UrunDetayDAL);
+                }
+                if (grs4[0] != null)
+                {
+                    klasorekaydet4(UrunDetayDAL);
+                    ftpyukle4(UrunDetayDAL);
+                }
+                ResSqlKaydet(UrunDetayDAL);
             }
-            if (grs2[0] != null)
-            {
-                klasorekaydet2(UrunDetayDAL);
-                ftpyukle2(UrunDetayDAL);
-            }
-            if (grs3[0] != null)
-            {
-                klasorekaydet3(UrunDetayDAL);
-                ftpyukle3(UrunDetayDAL);
-            }
-            if (grs4[0] != null)
-            {
-                klasorekaydet4(UrunDetayDAL);
-                ftpyukle4(UrunDetayDAL);
-            }
-
-            ResSqlKaydet(UrunDetayDAL);
             return RedirectToAction("Index", "Home");
         }
 
@@ -209,7 +211,7 @@ namespace _GMTEGRATOR.Controllers
         {
             #region FTP için sabit olanların bulunduğu method
             FtpWebRequest request = null;
-            string server, klasoradi, dosyadi, kadi, ksifre;
+            string server, klasoradi, kadi, ksifre;
             server = "104.247.162.242";
             klasoradi = "httpdocs/IMAGES/PRODUCT_IMG";
             kadi = "deartech";

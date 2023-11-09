@@ -1,0 +1,66 @@
+﻿@model  _GMTEGRATOR.Models.SettingsModel
+
+@{
+    Layout = "~/Views/Shared/_Sistem.cshtml";
+
+}
+
+<h2 style="font-family:serif">Database Bağlantı Ayarları:</h2>
+@*@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        <input type="submit" value="Kaydet" class="btn btn-outline-success" />
+    }*@
+@*@Html.AntiForgeryToken();*@
+<div class="container">
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {@Html.AntiForgeryToken();
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+
+            <table class="table table-hover">
+
+
+                @foreach (var item in Model.GM_USER_SYSTEM_SETTINGS)
+                {
+                    <tr>
+                        <td>Server:</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.SERVER_URL, new { @placeholder = item.SERVER_URL, @style = "width:350px" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kullanıcı Adı:</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.USER_NAME, new { @placeholder = item.USER_NAME })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Şifre:</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.USER_PASSWORD, new { @placeholder = item.USER_PASSWORD })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DB İsmi:</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.DBNAME, new { @placeholder = item.DBNAME })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-3">
+            <input type="submit" value="Kaydet" class="btn btn-outline-success" />
+        </div>
+    </div>
+}
+</div>
+
+

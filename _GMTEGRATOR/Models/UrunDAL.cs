@@ -10,7 +10,7 @@ namespace _GMTEGRATOR.Models
 
     interface IUrunAdd
     {
-        void UrunAdd(GM_TBLSTSABIT stsabit);
+        bool  UrunAdd(GM_TBLSTSABIT stsabit);
     }
     interface IUrunDelete
     {
@@ -39,7 +39,7 @@ namespace _GMTEGRATOR.Models
 
             try
             {
-                deartech_3Entities context = new deartech_3Entities();
+                deartech_3Entities1 context = new deartech_3Entities1();
                 context.GM_STSABITLOG.Add(gM_STSABITLOG);
                 context.SaveChangesAsync();
             }
@@ -49,9 +49,10 @@ namespace _GMTEGRATOR.Models
 
 
 
-        public void UrunAdd(GM_TBLSTSABIT stsabit)
+        public  bool UrunAdd(GM_TBLSTSABIT stsabit)
         {
-            deartech_3Entities context = new deartech_3Entities();
+            bool varyok = false;
+            deartech_3Entities1 context = new deartech_3Entities1();
             try
             {
                 var Urun = context.GM_TBLSTSABIT.FirstOrDefault(a => a.STOK_KODU == stsabit.STOK_KODU & a.MAGAZA_ID == stsabit.MAGAZA_ID);
@@ -59,7 +60,10 @@ namespace _GMTEGRATOR.Models
                 {
                     context.GM_TBLSTSABIT.Add(stsabit);
                     context.SaveChanges();
+                    varyok = true;
                 }
+                else
+                    UrunUpdate(stsabit);
             }
             catch (Exception exception)
             {
@@ -70,11 +74,12 @@ namespace _GMTEGRATOR.Models
                 gM_STSABITLOG.TARIH = DateTime.Now;
                 LogTut(gM_STSABITLOG);
             }
+            return varyok;
         }
 
         public void UrunDelete(GM_TBLSTSABIT stsabit)
         {
-            deartech_3Entities context = new deartech_3Entities();
+            deartech_3Entities1 context = new deartech_3Entities1();
             try
             {
                 var Urun = context.GM_TBLSTSABIT.FirstOrDefault(a => a.STOK_KODU == stsabit.STOK_KODU & a.MAGAZA_ID == stsabit.MAGAZA_ID);
@@ -99,13 +104,13 @@ namespace _GMTEGRATOR.Models
 
         public void UrunUpdate(GM_TBLSTSABIT stsabit)
         {
-            deartech_3Entities context = new deartech_3Entities();
+            deartech_3Entities1 context = new deartech_3Entities1();
             try
             {
                 var Urun = context.GM_TBLSTSABIT.FirstOrDefault(a => a.STOK_KODU == stsabit.STOK_KODU & a.MAGAZA_ID == stsabit.MAGAZA_ID);
                 if (Urun != null)
                 {
-                    Urun = stsabit;
+                    Urun.STOK_ADI = stsabit.STOK_ADI;
                     context.SaveChanges();
                 }
             }
