@@ -20,75 +20,129 @@
     <div class="container">
         <h2>Ürün Bilgileri</h2>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-lg-8">
                 <div class="row">
-                    <div class="col-md-3">  Stok Kodu:</div> @Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_KODU, new { @class = "form-control" })
+                    <div class="col-md-3">  Stok Kodu:</div>
+                    @if (Session["STOK_KODU"] != null)
+                    {
+                        @Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_KODU, new { @class = "form-control", @Value = Session["STOK_KODU"].ToString() })
+                    }
+                    else
+                    {
+                        @Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_KODU, new { @class = "form-control" })
+                    }
                 </div>
 
                 <div class="row">
                     <div class="col-md-3">
                         Stok Adı:
-                    </div> @Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_ADI, new { @class = "form-control" })
+                    </div>
+                        @if (Session["STOK_ADI"] != null)
+                        {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_ADI, new { @class = "form-control", @Value = Session["STOK_ADI"].ToString(), style = "font-size:14px" })}
+                    else
+                    {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_ADI, new { @class = "form-control" })}
+                   
                 </div>
-
                 <div class="row">
                     <div class="col-md-3">
                         Stok Açıklaması:
-                    </div>@Html.TextAreaFor(x => x.GM_TBLSTSABIT.STOK_ACIKLAMASI, new { @class = "form-control" })
-                </div>
+                    </div>
+                    @if (Session["STOK_ACIKLAMASI"] != null)
+                    {@Html.TextAreaFor(x => x.GM_TBLSTSABIT.STOK_ACIKLAMASI, new
+                       {
+                           @class = "form-control",
+                           @Value = Session["STOK_ACIKLAMASI"].ToString()
 
+                    })}
+                else
+                {@Html.TextAreaFor(x => x.GM_TBLSTSABIT.STOK_ACIKLAMASI, new { @class = "form-control" })}
+                </div>
 
 
 
                 <div class="row">
                     <div class="col-md-4">
-                        Fiyat:
-                        @Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_FIYAT, new { @class = "form-control" })
+                        Fiyat: @if (Session["STOK_FIYAT"] != null)
+                        {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_FIYAT, new { @class = "form-control", @Value = Session["STOK_FIYAT"].ToString() })}
+                    else
+                    {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_FIYAT, new { @class = "form-control" })}
                     </div>
                     <div class="col-md-4">
                         İndirimli Fiyat:
-                        @Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_FIYAT, new { @class = "form-control" })
+                        @if (Session["STOK_FIYAT"] != null)
+                        {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_FIYAT, new { @class = "form-control", @Value = Session["STOK_FIYAT"].ToString() })}
+                    else
+                    {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_FIYAT, new { @class = "form-control" })}
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         Stok Adedi:
-                    </div> @Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_ADEDI, new { @class = "form-control" })
+                    </div> @if (Session["STOK_ADEDI"] != null)
+                    {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_ADEDI, new { @class = "form-control", @Value = Session["STOK_ADEDI"].ToString() })}
+                else
+                {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.STOK_ADEDI, new { @class = "form-control" })}
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         Satıcı Stok Kodu:
-                    </div> @Html.TextBoxFor(x => x.GM_TBLSTSABIT.SELLER_STOK_KODU, new { @class = "form-control" })
+                    </div> @if (Session["SELLER_STOK_KODU"] != null)
+                    {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.SELLER_STOK_KODU, new { @class = "form-control", @Value = Session["SELLER_STOK_KODU"].ToString() })}
+                else
+                {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.SELLER_STOK_KODU, new { @class = "form-control" })}
                 </div>
 
 
                 <div class="row">
                     <div class="col-md-4">
-                        N11 Katalog ID:
-                        @Html.TextBoxFor(x => x.GM_TBLSTSABIT.N11_KATALOG_ID, new { @class = "form-control" })
+                        N11 Katalog ID:@if (Session["N11_KATALOG_ID"] != null)
+                        {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.N11_KATALOG_ID, new { @class = "form-control", @Value = Session["N11_KATALOG_ID"].ToString() })}
+                    else
+                    {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.N11_KATALOG_ID, new { @class = "form-control" })}
                     </div>
                     <div class="col-md-4">
-                        Hepsiburada SKU :
-                        @Html.TextBoxFor(x => x.GM_TBLSTSABIT.Hepsiburada_SKU, new { @class = "form-control" })
+                        Hepsiburada SKU :@if (Session["Hepsiburada_SKU"] != null)
+                        {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.Hepsiburada_SKU, new { @class = "form-control", @Value = Session["Hepsiburada_SKU"].ToString() })}
+                    else
+                    {@Html.TextBoxFor(x => x.GM_TBLSTSABIT.Hepsiburada_SKU, new { @class = "form-control" })}
                     </div>
                 </div>
 
 
             </div>
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <div class="row">
-                    <input type="file" class="gorsel" id="gorsel" name="gorsel" />
-                    <input type="file" class="gorsel2" id="gorsel2" name="gorsel2" />
+                    @if (Session["resim_url1"] != null)
+                    {
+                        <input type="file" class="gorsel" id="gorsel" name="gorsel" style="background: url( @Session["resim_url1"].ToString() );
+        background-size: contain;background-repeat: no-repeat;width: 160px;height: 170px;" />}
+                    else
+                    { <input type="file" class="gorsel" id="gorsel" name="gorsel" />}
+
+                    @if (Session["resim_url2"] != null)
+                    {
+                        <input type="file" class="gorsel2" id="gorsel2" name="gorsel2" style="background: url( @Session["resim_url2"].ToString() );
+        background-size: contain;background-repeat: no-repeat;width: 150px;height: 160px;" />}
+                    else
+                    { <input type="file" class="gorsel2" id="gorsel2" name="gorsel2" />}
                 </div>
                 <div class="row">
-                    <input type="file" class="gorsel3" id="gorsel3" name="gorsel3" />
-                    <input type="file" class="gorsel4" id="gorsel4" name="gorsel4" />
+                    @if (Session["resim_url3"] != null)
+                    {<input type="file" class="gorsel3" id="gorsel3" name="gorsel3" style="background: url( @Session["resim_url3"].ToString() );
+        background-size: contain;background-repeat: no-repeat;width: 140px;height: 150px;" />}
+                    else
+                    {<input type="file" class="gorsel3" id="gorsel3" name="gorsel3" />}
+                    @if (Session["resim_url4"] != null)
+                    {<input type="file" class="gorsel4" id="gorsel4" name="gorsel4" style="background: url( @Session["resim_url4"].ToString() );
+        background-size: contain;background-repeat: no-repeat;width: 140px;height: 150px;" />}
+                    else
+                    {<input type="file" class="gorsel4" id="gorsel4" name="gorsel4" />}
                 </div>
             </div>
 
         </div><br />
-        <input type="submit" class="btn btn-outline-success" value="ÜRÜN EKLE" />
+        <input type="submit" class="btn btn-outline-success" value="KAYDET" />
     </div>
 
 }

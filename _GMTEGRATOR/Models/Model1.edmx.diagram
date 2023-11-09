@@ -4,12 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2a3042d5d39b4036a1a6a792498d17be" Name="Diagram1">
-        <EntityTypeShape EntityType="deartech_3Model.GM_TBLSTRESIM" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="deartech_3Model.GM_TBLSTSABIT" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="deartech_3Model.TUM_URUNLER_V" Width="1.5" PointX="5.625" PointY="1" />
-        <EntityTypeShape EntityType="deartech_3Model.GM_KULLANICILAR" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="deartech_3Model.GM_STSABITLOG" Width="1.5" PointX="3.625" PointY="5.125" />
+      <Diagram DiagramId="82398a2d2c644b71999e6f37a67894a4" Name="Diagram1">
+        <EntityTypeShape EntityType="deartech_3Model.GM_KULLANICILAR" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="deartech_3Model.GM_STSABITLOG" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="deartech_3Model.GM_TBLSTRESIM" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="deartech_3Model.GM_TBLSTSABIT" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="deartech_3Model.GM_USER_SYSTEM_SETTINGS" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="deartech_3Model.TUM_URUNLER_V" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="deartech_3Model.GM_ERROR_MESSAGES" Width="1.5" PointX="0.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

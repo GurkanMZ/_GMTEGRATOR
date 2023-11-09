@@ -12,7 +12,7 @@ namespace _GMTEGRATOR.Controllers
 {
     public class LoginController : Controller
     {
-        deartech_3Entities context = new deartech_3Entities();
+        deartech_3Entities1 context = new deartech_3Entities1();
 
         // GET: Login
         public ActionResult Index()
@@ -38,6 +38,7 @@ namespace _GMTEGRATOR.Controllers
                     //4
                 Session["Kullanici_Yetki"] = kull.KULLANICI_YETKI.ToString();
                 Session["MagazaID"] = kull.MAGAZA_ID.ToString();
+                Session["KULLANICI_MAIL"] = kull.KULLANICI_MAIL.ToString();
                 Session["MagazaAdi"] = kull.MAGAZA_ADI.ToString();
                 if (kull.KULLANICI_YETKI == "standart")
                 {
