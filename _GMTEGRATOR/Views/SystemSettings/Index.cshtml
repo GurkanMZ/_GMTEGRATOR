@@ -16,38 +16,131 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-6">
+        <div class="col-md-5">
 
             <table class="table table-hover">
 
 
                 @foreach (var item in Model.GM_USER_SYSTEM_SETTINGS)
                 {
-                    <tr>
-                        <td>View/Tablo İsmi:</td>
-                        <td>
-                            @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.TABLO_VIEW_ISMI, new SelectList(ViewBag.TABLO_VIEW_ISMI1, "TABLO_VIEW_ISMI"))
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Kullanıcı Adı:</td>
-                        <td>
-                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.USER_NAME, new { @placeholder = item.USER_NAME })
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Şifre:</td>
-                        <td>
-                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.USER_PASSWORD, new { @placeholder = item.USER_PASSWORD })
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>DB İsmi:</td>
-                        <td>
-                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.DBNAME, new { @placeholder = item.DBNAME })
-                        </td>
-                    </tr>
+
+                    if (ViewBag.TABLO_VIEW_ISMI1 != null)
+                    {
+                        <tr>
+                            <td>View/Tablo İsmi:</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.TABLO_VIEW_ISMI, new SelectList(ViewBag.TABLO_VIEW_ISMI1, "TABLO_VIEW_ISMI"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Stok Kodu:</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.STOK_KODU, new SelectList(ViewBag.STOK_KODU, "STOK_KODU"))
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Stok Adı:</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.STOK_ADI, new SelectList(ViewBag.STOK_ADI, "STOK_ADI"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Stok Açıklaması:</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.STOK_ACIKLAMASI, new SelectList(ViewBag.STOK_ACIKLAMASI, "STOK_ACIKLAMASI"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Stok Fiyatı:</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.STOK_FIYAT, new SelectList(ViewBag.STOK_FIYAT, "STOK_FIYAT"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Stok Adedi:</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.STOK_ADEDI, new SelectList(ViewBag.STOK_ADEDI, "STOK_ADEDI"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Stok Aktif/Pasif:</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.STOK_AKTIF_PASIF, new SelectList(ViewBag.STOK_AKTIF_PASIF, "STOK_AKTIF_PASIF"))
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Satıcı Stok Kodu:</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.SELLER_STOK_KODU, new SelectList(ViewBag.SELLER_STOK_KODU, "SELLER_STOK_KODU"))
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+
+        </div>
+        <div class="col-md-5">
+
+            <table class="table table-hover">
+
+
+                @foreach (var item in Model.GM_USER_SYSTEM_SETTINGS)
+                {
+
+                    if (ViewBag.TABLO_VIEW_ISMI1 != null)
+                    {
+                  
+                        <tr>
+                            <td>N11 KatalogID:</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.N11_KATALOG_ID, new SelectList(ViewBag.N11_KATALOG_ID, "N11_KATALOG_ID"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hepsiburada SKU:</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.HEPSIBURADA_SKU, new SelectList(ViewBag.HEPSIBURADA_SKU, "HEPSIBURADA_SKU"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Marka:</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.MARKA, new SelectList(ViewBag.MARKA, "MARKA"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Resim URL 1</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.RESIM_URL1, new SelectList(ViewBag.RESIM_URL1, "RESIM_URL1"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Resim URL 2</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.RESIM_URL2, new SelectList(ViewBag.RESIM_URL2, "RESIM_URL2"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Resim URL 3</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.RESIM_URL3, new SelectList(ViewBag.RESIM_URL3, "RESIM_URL3"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Resim URL 4</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.RESIM_URL4, new SelectList(ViewBag.RESIM_URL4, "RESIM_URL4"))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Resim URL 5</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.USER_SYSTEM_SETTING.RESIM_URL5, new SelectList(ViewBag.RESIM_URL5, "RESIM_URL5"))
+                            </td>
+                        </tr>
+                    }
                 }
             </table>
 

@@ -11,8 +11,14 @@
         <input type="submit" value="Kaydet" class="btn btn-outline-success" />
     }*@
 @*@Html.AntiForgeryToken();*@
+@if (null != TempData["alertMessage"])
+{
+    <script type="text/javascript">
+    alert('@Html.Raw(@TempData["alertMessage"])');
+    </script>
+}
 <div class="container">
-    @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("SystemConnection", "SystemSettings", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {@Html.AntiForgeryToken();
     <div class="row">
         <div class="col-md-2"></div>
@@ -26,25 +32,25 @@
                     <tr>
                         <td>Server:</td>
                         <td>
-                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.SERVER_URL, new { @placeholder = item.SERVER_URL, @style = "width:350px" })
+                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.SERVER_URL, new { @Value = item.SERVER_URL, @placeholder = "Server URL", @style = "width:350px" })
                         </td>
                     </tr>
                     <tr>
                         <td>Kullanıcı Adı:</td>
                         <td>
-                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.USER_NAME, new { @placeholder = item.USER_NAME })
+                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.USER_NAME, new { @Value = item.USER_NAME, @placeholder = "Kullanıcı Adı" })
                         </td>
                     </tr>
                     <tr>
                         <td>Şifre:</td>
                         <td>
-                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.USER_PASSWORD, new { @placeholder = item.USER_PASSWORD })
+                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.USER_PASSWORD, new { @Value = item.USER_PASSWORD, @placeholder = "Şifre" })
                         </td>
                     </tr>
                     <tr>
                         <td>DB İsmi:</td>
                         <td>
-                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.DBNAME, new { @placeholder = item.DBNAME })
+                            @Html.TextBoxFor(m => m.USER_SYSTEM_SETTING.DBNAME, new { @Value = item.DBNAME, @placeholder = "Database Adı" })
                         </td>
                     </tr>
                 }
